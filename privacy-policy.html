@@ -54,10 +54,11 @@
       padding-bottom: 16px;
     }
     h2 {
-      font-size: 20px;
+      font-size: 19px;
       color: #fff;
       margin-top: 32px;
       margin-bottom: 12px;
+      letter-spacing: 0.3px;
     }
     p, li {
       color: var(--text-muted);
@@ -67,10 +68,17 @@
       padding-left: 20px;
     }
     li {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     strong {
       color: #fff;
+    }
+    code {
+      background: rgba(45, 212, 191, 0.12);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 14px;
     }
     .callout {
       background: rgba(45, 212, 191, 0.08);
@@ -91,39 +99,36 @@
     <div class="date">Last Updated: September 2026</div>
 
     <div class="callout">
-      <p><strong>Summary:</strong> Up-To-Theta is built with a local-first philosophy. We do not collect, transmit, sell, or monetize any personal data. All your tasks, timers, streaks, and settings remain 100% on your local computer.</p>
+      <p><strong>Summary:</strong> Up-To-Theta was designed with a local-first approach in mind. None of your personal data is collected, transmitted, sold, or monetized. Everything you set up stays entirely locally on your computer.</p>
     </div>
 
     <h2>1. Information We Collect</h2>
-    <p>Up-To-Theta does <strong>NOT</strong> collect, store, or transmit any personally identifiable information (PII). There are no user accounts, no tracking analytics, and no remote server databases.</p>
+    <p>Up-To-Theta DOES NOT collect, store, or transfer any personally identifiable information (PII). No user accounts, tracking analytics, or remote databases exist.</p>
 
     <h2>2. How Local Data is Stored</h2>
-    <p>The extension uses Chrome's built-in local storage API (<code>chrome.storage.local</code>) solely on your own browser to save:</p>
+    <p>The extension utilizes only Chrome's built-in local storage API (<code>chrome.storage.local</code>) on your own browser to store:</p>
     <ul>
-      <li>Your custom timer preferences (focus duration, break duration, audio volume).</li>
-      <li>Your task list, due dates, reminder times, and task completion logs.</li>
-      <li>Your focus statistics, streaks, and heatmap data.</li>
-      <li>Your list of custom websites to block during focus sessions.</li>
+      <li>Your timer configuration (focus time, break time, audio volume level).</li>
+      <li>Your task list, deadlines, reminder times, and history of completed tasks.</li>
+      <li>Focus statistics, streaks, and heatmaps information.</li>
+      <li>Your custom websites that should be blocked while you're in the focus mode.</li>
     </ul>
-    <p>This data never leaves your device and is never shared with third parties or external servers.</p>
+    <p>This data never leaves your device and never gets shared anywhere else.</p>
 
-    <h2>3. Browser Permissions &amp; Why They Are Used</h2>
+    <h2>3. BROWSER PERMISSIONS AND WHY THEY ARE USED</h2>
     <ul>
-      <li><strong>Storage:</strong> Required to save your settings and task records locally on your device.</li>
-      <li><strong>Alarms:</strong> Required to calculate timer countdowns and deliver task reminder alerts reliably even when the extension popup is closed.</li>
-      <li><strong>Notifications:</strong> Required to alert you when a focus period finishes, a break starts, or a scheduled task reminder arrives.</li>
-      <li><strong>Tabs:</strong> Required to open or switch focus to your Up-To-Theta dashboard tab when you click on notifications or the extension icon.</li>
-      <li><strong>DeclarativeNetRequest &amp; Host Permissions (&lt;all_urls&gt;):</strong> Exclusively used during active focus sessions to block user-specified distracting websites (e.g. social media) and redirect them to your local focus screen. No browsing history is tracked, logged, or sent anywhere.</li>
+      <li><strong>Storage:</strong> Needed to store your settings and tasks in the local storage of your computer.</li>
+      <li><strong>Alarms:</strong> Needed to do the timer calculations and provide reminders about tasks regardless of whether the extension popup is open.</li>
+      <li><strong>Notifications:</strong> Needed to notify you that your focused session is over, a break has begun, or there is a reminder about your task.</li>
+      <li><strong>Tabs:</strong> Needed to launch or switch to your Up-To-Theta dashboard tab when you get notifications or press on the extension icon.</li>
+      <li><strong>DeclarativeNetRequest &amp; Host Permissions (&lt;all_urls&gt;):</strong> Used only while your session of focus for blocking distracting websites according to your choice (for example, social media) and redirecting them to your local focus screen. No tracking, logging, or sending of any browsing history takes place.</li>
     </ul>
 
-    <h2>4. Third-Party Services</h2>
-    <p>Up-To-Theta does not use third-party analytics SDKs, tracking pixels, or external ad networks. All fonts, icons, and audio synthesis are bundled locally within the extension.</p>
+    <h2>4. THIRD-PARTY SERVICES</h2>
+    <p>Up-To-Theta does not use third-party analytics SDKs, tracking pixels, and advertising networks. The fonts, icons, and voice synthesis are stored locally in the extension.</p>
 
-    <h2>5. Changes to This Policy</h2>
-    <p>If our privacy practices change, this policy will be updated immediately. However, our commitment to keeping your focus data private on your local device will remain unchanged.</p>
-
-    <h2>6. Contact Us</h2>
-    <p>If you have any questions or feedback regarding this Privacy Policy, please contact the developer via the official extension support page.</p>
+    <h2>5. CHANGES TO THIS POLICY</h2>
+    <p>In case of changes in our privacy policy, we will update this page immediately. However, our policy regarding storing your focus data locally on your computer will stay the same.</p>
   </div>
 </body>
 </html>
