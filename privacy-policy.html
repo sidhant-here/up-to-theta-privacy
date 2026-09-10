@@ -1,134 +1,621 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy — Up-To-Theta Focus Timer</title>
-  <style>
-    :root {
-      --bg: #0c0e14;
-      --card-bg: #151821;
-      --border: #232838;
-      --text: #e2e8f0;
-      --text-muted: #94a3b8;
-      --accent: #2dd4bf;
-    }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      margin: 0;
-      padding: 40px 20px;
-    }
-    .container {
-      max-width: 780px;
-      margin: 0 auto;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 40px 32px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-    h1 {
-      font-size: 28px;
-      color: #fff;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .badge {
-      font-size: 14px;
-      background: rgba(45, 212, 191, 0.15);
-      color: var(--accent);
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-weight: 500;
-    }
-    .date {
-      color: var(--text-muted);
-      font-size: 14px;
-      margin-bottom: 32px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 16px;
-    }
-    h2 {
-      font-size: 19px;
-      color: #fff;
-      margin-top: 32px;
-      margin-bottom: 12px;
-      letter-spacing: 0.3px;
-    }
-    p, li {
-      color: var(--text-muted);
-      font-size: 15px;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    li {
-      margin-bottom: 10px;
-    }
-    strong {
-      color: #fff;
-    }
-    code {
-      background: rgba(45, 212, 191, 0.12);
-      color: var(--accent);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 14px;
-    }
-    .callout {
-      background: rgba(45, 212, 191, 0.08);
-      border-left: 4px solid var(--accent);
-      padding: 16px 20px;
-      border-radius: 0 8px 8px 0;
-      margin: 24px 0;
-    }
-    .callout p {
-      margin: 0;
-      color: #e2e8f0;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Up-To-Theta Focus Timer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #0B1210;
+    --ink-2: #111C17;
+    --ink-3: #16221C;
+    --hairline: #22322A;
+    --hairline-soft: #192720;
+    --text: #ECF2ED;
+    --text-muted: #91A69A;
+    --text-faint: #566B60;
+    --amber: #E7A75A;
+    --amber-dim: #7A5C34;
+    --amber-glow: rgba(231,167,90,0.13);
+    --signal: #6FCF97;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin: 0;
+    background:
+      radial-gradient(ellipse 1000px 600px at 10% -15%, rgba(231,167,90,0.07), transparent 55%),
+      radial-gradient(ellipse 800px 500px at 105% 10%, rgba(111,207,151,0.045), transparent 55%),
+      var(--ink);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* subtle grain */
+  body::before{
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  ::selection{ background: var(--amber-glow); color: var(--amber); }
+
+  a{ color: inherit; }
+
+  code{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+    background: var(--ink-3);
+    border: 1px solid var(--hairline);
+    padding: 1.5px 6px;
+    border-radius: 3px;
+    color: var(--amber);
+  }
+
+  /* ---------- Top status bar ---------- */
+
+  .statusbar{
+    position: relative; z-index: 2;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid var(--hairline-soft);
+    background: rgba(11,18,16,0.6);
+    backdrop-filter: blur(6px);
+  }
+
+  .statusbar-inner{
+    width: 100%;
+    max-width: 1040px;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-faint);
+  }
+
+  .status-live{
+    display: flex; align-items: center; gap: 8px;
+    color: var(--signal);
+  }
+
+  .signal-dot{
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--signal);
+    box-shadow: 0 0 0 3px rgba(111,207,151,0.15);
+    flex-shrink: 0;
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse{
+    0%, 100%{ opacity: 1; }
+    50%{ opacity: 0.4; }
+  }
+
+  /* ---------- Hero ---------- */
+
+  .hero{
+    position: relative; z-index: 2;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 88px 32px 0;
+  }
+
+  .hero-label{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--amber-dim);
+    margin-bottom: 22px;
+    letter-spacing: 0.02em;
+  }
+
+  h1{
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: 76px;
+    line-height: 0.98;
+    margin: 0 0 22px;
+    letter-spacing: -0.015em;
+    max-width: 11ch;
+  }
+
+  .hero-sub{
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 46ch;
+    margin: 0 0 48px;
+  }
+
+  .hero-sub strong{ color: var(--text); font-weight: 500; }
+
+  /* waveform */
+  .wave-wrap{
+    position: relative;
+    margin: 0 -32px 8px;
+  }
+
+  .wave-wrap svg{ display: block; width: 100%; height: auto; }
+
+  .wave-path{
+    stroke-dasharray: 1400;
+    stroke-dashoffset: 1400;
+    animation: draw 2.6s cubic-bezier(.4,0,.2,1) forwards 0.3s;
+  }
+
+  @keyframes draw{
+    to{ stroke-dashoffset: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .wave-path{ animation: none; stroke-dashoffset: 0; }
+  }
+
+  .wave-labels{
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-faint);
+    padding: 0 32px 56px;
+    margin-top: -6px;
+  }
+
+  .wave-labels span:last-child{ color: var(--amber-dim); }
+
+  /* ---------- Quick facts ---------- */
+
+  .facts{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .fact{
+    padding: 30px 32px;
+    border-right: 1px solid var(--hairline);
+  }
+
+  .fact:last-child{ border-right: none; }
+
+  .fact-num{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 40px;
+    color: var(--amber);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .fact-label{
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    max-width: 22ch;
+  }
+
+  @media (max-width: 760px){
+    .facts{ grid-template-columns: 1fr; }
+    .fact{ border-right: none; border-bottom: 1px solid var(--hairline); }
+    .fact:last-child{ border-bottom: none; }
+    h1{ font-size: 48px; }
+  }
+
+  /* ---------- Body layout ---------- */
+
+  .body-wrap{
+    position: relative; z-index: 2;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 64px 32px 120px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  nav.toc{
+    position: sticky;
+    top: 40px;
+  }
+
+  .toc-title{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-faint);
+    margin-bottom: 16px;
+  }
+
+  .toc ol{
+    list-style: none;
+    margin: 0; padding: 0;
+    border-left: 1px solid var(--hairline);
+  }
+
+  .toc li{ margin: 0; }
+
+  .toc a{
+    display: block;
+    padding: 8px 0 8px 16px;
+    margin-left: -1px;
+    border-left: 1px solid transparent;
+    font-size: 13.5px;
+    color: var(--text-faint);
+    text-decoration: none;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .toc a:hover{ color: var(--text-muted); }
+
+  .toc a.active{
+    color: var(--amber);
+    border-left-color: var(--amber);
+  }
+
+  @media (max-width: 760px){
+    .body-wrap{ grid-template-columns: 1fr; }
+    nav.toc{ display: none; }
+  }
+
+  main{ min-width: 0; }
+
+  section{
+    margin-bottom: 64px;
+    scroll-margin-top: 40px;
+  }
+
+  .section-head{
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--hairline-soft);
+  }
+
+  .section-num{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--amber-dim);
+  }
+
+  h2{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 26px;
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+
+  p{
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin: 0 0 16px;
+    max-width: 60ch;
+  }
+
+  p:last-child{ margin-bottom: 0; }
+  .highlight{ color: var(--text); }
+
+  /* ---------- Ledger ---------- */
+
+  .ledger{
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+
+  .ledger-row{
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    gap: 20px;
+    padding: 15px 18px;
+    border-bottom: 1px solid var(--hairline-soft);
+  }
+
+  .ledger-row:last-child{ border-bottom: none; }
+  .ledger-row:nth-child(odd){ background: var(--ink-2); }
+
+  .ledger-key{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--amber);
+    padding-top: 1px;
+  }
+
+  .ledger-val{
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  @media (max-width: 560px){
+    .ledger-row{ grid-template-columns: 1fr; gap: 6px; }
+  }
+
+  .storage-note{
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-top: 18px;
+    padding: 14px 16px;
+    background: var(--ink-2);
+    border: 1px solid var(--hairline-soft);
+    border-radius: 4px;
+  }
+
+  .storage-note .signal-dot{ margin-top: 6px; animation: none; }
+
+  .storage-note p{ margin: 0; font-size: 13.5px; color: var(--text-muted); }
+
+  /* ---------- Permissions list ---------- */
+
+  .perm-list{ list-style: none; margin: 8px 0 0; padding: 0; }
+
+  .perm-list li{
+    position: relative;
+    padding: 12px 0 12px 24px;
+    border-bottom: 1px solid var(--hairline-soft);
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .perm-list li:last-child{ border-bottom: none; }
+
+  .perm-list li::before{
+    content: "";
+    position: absolute;
+    left: 2px; top: 20px;
+    width: 6px; height: 1px;
+    background: var(--amber-dim);
+  }
+
+  .perm-list li strong{ color: var(--text); font-weight: 500; }
+
+  /* ---------- Footer ---------- */
+
+  footer{
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 32px 80px;
+    position: relative; z-index: 2;
+  }
+
+  .footer-inner{
+    margin-left: 264px;
+    padding-top: 32px;
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  @media (max-width: 760px){
+    .footer-inner{ margin-left: 0; }
+  }
+
+  .foot-left{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-faint);
+    line-height: 1.6;
+  }
+
+  footer a{
+    color: var(--amber);
+    text-decoration: none;
+    border-bottom: 1px solid var(--amber-dim);
+  }
+
+  footer a:hover{ border-bottom-color: var(--amber); }
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>Up-To-Theta <span class="badge">100% Private</span></h1>
-    <div class="date">Last Updated: September 2026</div>
 
-    <div class="callout">
-      <p><strong>Summary:</strong> Up-To-Theta was designed with a local-first approach in mind. None of your personal data is collected, transmitted, sold, or monetized. Everything you set up stays entirely locally on your computer.</p>
-    </div>
-
-    <h2>1. Information We Collect</h2>
-    <p>Up-To-Theta DOES NOT collect, store, or transfer any personally identifiable information (PII). No user accounts, tracking analytics, or remote databases exist.</p>
-
-    <h2>2. How Local Data is Stored</h2>
-    <p>The extension utilizes only Chrome's built-in local storage API (<code>chrome.storage.local</code>) on your own browser to store:</p>
-    <ul>
-      <li>Your timer configuration (focus time, break time, audio volume level).</li>
-      <li>Your task list, deadlines, reminder times, and history of completed tasks.</li>
-      <li>Focus statistics, streaks, and heatmaps information.</li>
-      <li>Your custom websites that should be blocked while you're in the focus mode.</li>
-    </ul>
-    <p>This data never leaves your device and never gets shared anywhere else.</p>
-
-    <h2>3. BROWSER PERMISSIONS AND WHY THEY ARE USED</h2>
-    <ul>
-      <li><strong>Storage:</strong> Needed to store your settings and tasks in the local storage of your computer.</li>
-      <li><strong>Alarms:</strong> Needed to do the timer calculations and provide reminders about tasks regardless of whether the extension popup is open.</li>
-      <li><strong>Notifications:</strong> Needed to notify you that your focused session is over, a break has begun, or there is a reminder about your task.</li>
-      <li><strong>Tabs:</strong> Needed to launch or switch to your Up-To-Theta dashboard tab when you get notifications or press on the extension icon.</li>
-      <li><strong>DeclarativeNetRequest &amp; Host Permissions (&lt;all_urls&gt;):</strong> Used only while your session of focus for blocking distracting websites according to your choice (for example, social media) and redirecting them to your local focus screen. No tracking, logging, or sending of any browsing history takes place.</li>
-    </ul>
-
-    <h2>4. THIRD-PARTY SERVICES</h2>
-    <p>Up-To-Theta does not use third-party analytics SDKs, tracking pixels, and advertising networks. The fonts, icons, and voice synthesis are stored locally in the extension.</p>
-
-    <h2>5. CHANGES TO THIS POLICY</h2>
-    <p>In case of changes in our privacy policy, we will update this page immediately. However, our policy regarding storing your focus data locally on your computer will stay the same.</p>
+<div class="statusbar">
+  <div class="statusbar-inner">
+    <span>up-to-theta / privacy-policy</span>
+    <span class="status-live"><span class="signal-dot"></span>local-only</span>
   </div>
+</div>
+
+<div class="hero">
+  <div class="hero-label">privacy policy — last updated September 2026</div>
+  <h1>Nothing leaves this tab.</h1>
+  <p class="hero-sub">Up-To-Theta was designed with a local-first approach in mind. <strong>None of your personal data is collected, transmitted, sold, or monetized.</strong> Everything you set up stays entirely locally on your computer.</p>
+
+  <div class="wave-wrap">
+    <svg viewBox="0 0 1040 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#192720" stroke-width="1">
+        <line x1="0" y1="40" x2="1040" y2="40"/>
+        <line x1="0" y1="80" x2="1040" y2="80"/>
+        <line x1="0" y1="120" x2="1040" y2="120"/>
+      </g>
+      <path class="wave-path" d="M0,80
+               C15,15 30,145 45,70
+               C60,5 75,150 90,65
+               C108,15 126,140 144,78
+               C165,25 183,128 204,72
+               C228,32 249,116 273,76
+               C302,40 325,108 352,78
+               C386,48 412,102 442,78
+               C480,54 510,98 544,80
+               C584,60 618,96 655,81
+               C698,64 733,93 773,82
+               C818,68 854,90 897,82
+               C942,72 978,88 1040,80"
+        fill="none" stroke="#E7A75A" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="wave-labels">
+    <span>busy tab, 40+ Hz</span>
+    <span>theta rhythm, 4–8 Hz</span>
+  </div>
+
+  <div class="facts">
+    <div class="fact">
+      <div class="fact-num">0</div>
+      <div class="fact-label">accounts, sign-ins, or emails required to use the extension</div>
+    </div>
+    <div class="fact">
+      <div class="fact-num">0</div>
+      <div class="fact-label">servers your tasks, timers, or stats are ever sent to</div>
+    </div>
+    <div class="fact">
+      <div class="fact-num">0</div>
+      <div class="fact-label">third-party analytics, tracking pixels, or ad networks used</div>
+    </div>
+  </div>
+</div>
+
+<div class="body-wrap">
+
+  <nav class="toc">
+    <div class="toc-title">on this page</div>
+    <ol>
+      <li><a href="#collect" class="toc-link">Information We Collect</a></li>
+      <li><a href="#storage" class="toc-link">Local Data Storage</a></li>
+      <li><a href="#permissions" class="toc-link">Browser Permissions</a></li>
+      <li><a href="#third-parties" class="toc-link">Third-Party Services</a></li>
+      <li><a href="#changes" class="toc-link">Changes to Policy</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <section id="collect">
+      <div class="section-head">
+        <span class="section-num">1</span>
+        <h2>Information We Collect</h2>
+      </div>
+      <p>Up-To-Theta <span class="highlight">DOES NOT</span> collect, store, or transfer any personally identifiable information (PII). No user accounts, tracking analytics, or remote databases exist.</p>
+    </section>
+
+    <section id="storage">
+      <div class="section-head">
+        <span class="section-num">2</span>
+        <h2>How Local Data is Stored</h2>
+      </div>
+      <p>The extension utilizes only Chrome's built-in local storage API (<code>chrome.storage.local</code>) on your own browser to store:</p>
+
+      <div class="ledger">
+        <div class="ledger-row">
+          <div class="ledger-key">timer_config</div>
+          <div class="ledger-val">Your timer configuration (focus time, break time, audio volume level).</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-key">task_list</div>
+          <div class="ledger-val">Your task list, deadlines, reminder times, and history of completed tasks.</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-key">focus_stats</div>
+          <div class="ledger-val">Focus statistics, streaks, and heatmaps information.</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-key">blocked_sites</div>
+          <div class="ledger-val">Your custom websites that should be blocked while you're in the focus mode.</div>
+        </div>
+      </div>
+
+      <div class="storage-note">
+        <span class="signal-dot"></span>
+        <p>This data never leaves your device and never gets shared anywhere else. Uninstalling the extension or clearing its data deletes everything permanently — we keep no backup, because we never had a copy.</p>
+      </div>
+    </section>
+
+    <section id="permissions">
+      <div class="section-head">
+        <span class="section-num">3</span>
+        <h2>Browser Permissions and Why They Are Used</h2>
+      </div>
+      <p>Chrome requires us to declare permissions up front. Here is exactly what each one does:</p>
+
+      <div class="ledger">
+        <div class="ledger-row">
+          <div class="ledger-key">storage</div>
+          <div class="ledger-val">Needed to store your settings and tasks in the local storage of your computer.</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-key">alarms</div>
+          <div class="ledger-val">Needed to do the timer calculations and provide reminders about tasks regardless of whether the extension popup is open.</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-key">notifications</div>
+          <div class="ledger-val">Needed to notify you that your focused session is over, a break has begun, or there is a reminder about your task.</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-key">tabs</div>
+          <div class="ledger-val">Needed to launch or switch to your Up-To-Theta dashboard tab when you get notifications or press on the extension icon.</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-key">declarativeNetRequest &amp; host permissions</div>
+          <div class="ledger-val">Used only while your session of focus for blocking distracting websites according to your choice (for example, social media) and redirecting them to your local focus screen. No tracking, logging, or sending of any browsing history takes place.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="third-parties">
+      <div class="section-head">
+        <span class="section-num">4</span>
+        <h2>Third-Party Services</h2>
+      </div>
+      <p>Up-To-Theta does not use third-party analytics SDKs, tracking pixels, and advertising networks. The fonts, icons, and voice synthesis are stored locally in the extension.</p>
+    </section>
+
+    <section id="changes">
+      <div class="section-head">
+        <span class="section-num">5</span>
+        <h2>Changes to This Policy</h2>
+      </div>
+      <p>In case of changes in our privacy policy, we will update this page immediately. However, our policy regarding storing your focus data locally on your computer will stay the same.</p>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="foot-left">
+      Up-To-Theta · Chrome Extension<br>
+      © 2026 Up-To-Theta. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  const links = document.querySelectorAll('.toc-link');
+  const sections = document.querySelectorAll('main section');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute('id');
+      const link = document.querySelector(`.toc-link[href="#${id}"]`);
+      if (entry.isIntersecting){
+        links.forEach(l => l.classList.remove('active'));
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
 </body>
 </html>
