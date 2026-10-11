@@ -472,15 +472,15 @@
   <div class="facts">
     <div class="fact">
       <div class="fact-num">0</div>
-      <div class="fact-label">accounts, sign-ins, or emails required to use the extension</div>
-    </div>
-    <div class="fact">
-      <div class="fact-num">0</div>
-      <div class="fact-label">servers your tasks, timers, or stats are ever sent to</div>
+      <div class="fact-label">accounts or sign-ins required to use the extension — Google Sign-In is entirely optional</div>
     </div>
     <div class="fact">
       <div class="fact-num">0</div>
       <div class="fact-label">third-party analytics, tracking pixels, or ad networks used</div>
+    </div>
+    <div class="fact">
+      <div class="fact-num">100%</div>
+      <div class="fact-label">of your data stays on your device unless you choose to sign in and sync</div>
     </div>
   </div>
 </div>
@@ -492,8 +492,10 @@
     <ol>
       <li><a href="#collect" class="toc-link">Information We Collect</a></li>
       <li><a href="#storage" class="toc-link">Local Data Storage</a></li>
+      <li><a href="#cloud" class="toc-link">Optional Cloud Sync</a></li>
       <li><a href="#permissions" class="toc-link">Browser Permissions</a></li>
       <li><a href="#third-parties" class="toc-link">Third-Party Services</a></li>
+      <li><a href="#deletion" class="toc-link">Data Deletion</a></li>
       <li><a href="#changes" class="toc-link">Changes to Policy</a></li>
     </ol>
   </nav>
@@ -505,7 +507,26 @@
         <span class="section-num">1</span>
         <h2>Information We Collect</h2>
       </div>
-      <p>Up-To-Theta <span class="highlight">DOES NOT</span> collect, store, or transfer any personally identifiable information (PII). No user accounts, tracking analytics, or remote databases exist.</p>
+      <p>Up-To-Theta <span class="highlight">DOES NOT</span> require any account, sign-in, or personal information to use. All core features — timer, tasks, goals, streaks, heatmap, ambient sounds, and weekly reports — work entirely offline with data stored only on your device.</p>
+      <p><strong>Optional Google Sign-In:</strong> If you choose to sign in with Google, the following information is received from your Google account to enable cloud sync:</p>
+      <div class="ledger">
+        <div class="ledger-row">
+          <div class="ledger-key">display name</div>
+          <div class="ledger-val">Your Google account display name, shown in the Arena leaderboard and used as your default username.</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-key">email address</div>
+          <div class="ledger-val">Used solely to identify your account for syncing. Never shared, marketed to, or displayed publicly.</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-key">profile photo</div>
+          <div class="ledger-val">Your Google profile photo URL, used only for your leaderboard avatar. Never stored beyond what Firebase Authentication retains.</div>
+        </div>
+      </div>
+      <div class="storage-note">
+        <span class="signal-dot"></span>
+        <p>This information is provided by Google's OAuth flow and is used exclusively to authenticate you and display your identity in the Arena leaderboard. We do not access your contacts, emails, Drive files, or any other Google data.</p>
+      </div>
     </section>
 
     <section id="storage">
@@ -513,7 +534,7 @@
         <span class="section-num">2</span>
         <h2>How Local Data is Stored</h2>
       </div>
-      <p>The extension utilizes only Chrome's built-in local storage API (<code>chrome.storage.local</code>) on your own browser to store:</p>
+      <p>The extension utilizes Chrome's built-in local storage API (<code>chrome.storage.local</code>) on your own browser to store:</p>
 
       <div class="ledger">
         <div class="ledger-row">
@@ -526,7 +547,7 @@
         </div>
         <div class="ledger-row">
           <div class="ledger-key">focus_stats</div>
-          <div class="ledger-val">Focus statistics, streaks, and heatmaps information.</div>
+          <div class="ledger-val">Focus statistics, streaks, XP, rank, and heatmap information.</div>
         </div>
         <div class="ledger-row">
           <div class="ledger-key">blocked_sites</div>
@@ -536,13 +557,41 @@
 
       <div class="storage-note">
         <span class="signal-dot"></span>
-        <p>This data never leaves your device and never gets shared anywhere else. Uninstalling the extension or clearing its data deletes everything permanently — we keep no backup, because we never had a copy.</p>
+        <p>By default, this data never leaves your device. Uninstalling the extension or clearing its data deletes everything permanently.</p>
+      </div>
+    </section>
+
+    <section id="cloud">
+      <div class="section-head">
+        <span class="section-num">3</span>
+        <h2>Optional Cloud Sync &amp; Arena Leaderboard</h2>
+      </div>
+      <p>If you <strong>opt in</strong> by signing in with Google, the following data is synced to Firebase (Google's cloud platform) so you can access it across devices and participate in the Arena leaderboard:</p>
+
+      <div class="ledger">
+        <div class="ledger-row">
+          <div class="ledger-key">focus data</div>
+          <div class="ledger-val">Sessions, minutes, streaks, tasks, heatmap, goals, and settings — the same data stored locally.</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-key">leaderboard profile</div>
+          <div class="ledger-val">Your username, XP, rank, streak, and weekly session count — displayed publicly on the Arena leaderboard.</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-key">authentication token</div>
+          <div class="ledger-val">A secure OAuth token from Google, used only to authenticate read/write access to your own data in Firebase. The token is never stored by the extension.</div>
+        </div>
+      </div>
+
+      <div class="storage-note">
+        <span class="signal-dot"></span>
+        <p>Cloud sync is <strong>entirely optional</strong>. If you never sign in, zero data is sent to any server. You can sign out at any time from the extension's settings, which stops all syncing immediately.</p>
       </div>
     </section>
 
     <section id="permissions">
       <div class="section-head">
-        <span class="section-num">3</span>
+        <span class="section-num">4</span>
         <h2>Browser Permissions and Why They Are Used</h2>
       </div>
       <p>Chrome requires us to declare permissions up front. Here is exactly what each one does:</p>
@@ -551,6 +600,10 @@
         <div class="ledger-row">
           <div class="ledger-key">storage</div>
           <div class="ledger-val">Needed to store your settings and tasks in the local storage of your computer.</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-key">identity</div>
+          <div class="ledger-val">Used for optional Google Sign-In via <code>chrome.identity.getAuthToken()</code>. This enables cloud backup and Arena leaderboard features. No sign-in is required to use the extension.</div>
         </div>
         <div class="ledger-row">
           <div class="ledger-key">alarms</div>
@@ -565,26 +618,49 @@
           <div class="ledger-val">Needed to launch or switch to your Up-To-Theta dashboard tab when you get notifications or press on the extension icon.</div>
         </div>
         <div class="ledger-row">
+          <div class="ledger-key">contextMenus</div>
+          <div class="ledger-val">Allows users to quickly add tasks and start focus sessions directly from the right-click context menu on any webpage.</div>
+        </div>
+        <div class="ledger-row">
           <div class="ledger-key">declarativeNetRequest &amp; host permissions</div>
-          <div class="ledger-val">Used only while your session of focus for blocking distracting websites according to your choice (for example, social media) and redirecting them to your local focus screen. No tracking, logging, or sending of any browsing history takes place.</div>
+          <div class="ledger-val">Used only during focus sessions for blocking distracting websites according to your choice. No tracking, logging, or sending of any browsing history takes place.</div>
         </div>
       </div>
     </section>
 
     <section id="third-parties">
       <div class="section-head">
-        <span class="section-num">4</span>
+        <span class="section-num">5</span>
         <h2>Third-Party Services</h2>
       </div>
-      <p>Up-To-Theta does not use third-party analytics SDKs, tracking pixels, and advertising networks. The fonts, icons, and voice synthesis are stored locally in the extension.</p>
+      <p>Up-To-Theta does not use third-party analytics SDKs, tracking pixels, or advertising networks. The fonts, icons, and voice synthesis are stored locally in the extension.</p>
+      <p><strong>Firebase (Google):</strong> If you opt in to Google Sign-In, your focus data is stored in Firebase Realtime Database and your authentication is handled by Firebase Authentication — both operated by Google. Google's privacy policy applies to these services: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+    </section>
+
+    <section id="deletion">
+      <div class="section-head">
+        <span class="section-num">6</span>
+        <h2>Data Deletion</h2>
+      </div>
+      <p>You have full control over your data at all times:</p>
+      <div class="ledger">
+        <div class="ledger-row">
+          <div class="ledger-key">local data</div>
+          <div class="ledger-val">Uninstall the extension or clear its storage from <code>chrome://extensions</code>. All local data is permanently deleted.</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-key">cloud data</div>
+          <div class="ledger-val">Sign out from the extension settings. You may also revoke access from your Google account at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</div>
+        </div>
+      </div>
     </section>
 
     <section id="changes">
       <div class="section-head">
-        <span class="section-num">5</span>
+        <span class="section-num">7</span>
         <h2>Changes to This Policy</h2>
       </div>
-      <p>In case of changes in our privacy policy, we will update this page immediately. However, our policy regarding storing your focus data locally on your computer will stay the same.</p>
+      <p>If we make changes to this privacy policy, we will update this page immediately. Our commitment to keeping your data private and sign-in optional will remain unchanged.</p>
     </section>
 
   </main>
